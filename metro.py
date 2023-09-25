@@ -36,3 +36,4 @@ def bfs(grafo, inicio, sol):
 
 ruta_politecnico = bfs(metro, 'universidad', 'universidad')
 print("La ruta desde el metro Universidad hasta el metro Politécnico es: ", visitado)
+#prueba

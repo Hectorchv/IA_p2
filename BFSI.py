@@ -9,11 +9,11 @@ grafo={
   'J':[]
 }
 
-visitado = [] 
-queue = []     
-prev=[]
-
-def bfs(visitado, grafo, nodo,iter):
+def bfsl(grafo, nodo,iter):
+  visitado = [] 
+  queue = []     
+  prev=[]
+  
   visitado.append(nodo)
   queue.append(nodo)
   prev = []
@@ -33,6 +33,9 @@ def bfs(visitado, grafo, nodo,iter):
         visitado.append(neighbour)
         queue.append(neighbour)
     
+def bfsi(grafo, nodo,iter):
+  for i in range(iter+1):
+    print("Para i =", i)
+    print(bfsl(grafo,nodo,i))
 
-recorrido = bfs(visitado, grafo, 'A', 2)
-print(recorrido)
+recorrido = bfsi(grafo, 'A', 4)

@@ -1,34 +1,32 @@
-grafo = {
-  'I' : ['D','E','A'],
-  'D' : ['F'],
-  'E' : ['D', 'O'],
-  'A' : ['D'],
-  'O' : ['M'],
-  'M' : ['Q']
+grafo={
+  'A' : ['B','C'],
+  'B' : ['D', 'E'],
+  'C' : ['F','J'],
+  'D' : [],
+  'E' : ['H'],
+  'F' : [],
+  'H':[],
+  'J':[]
 }
 
 visitado = [] 
-queue = []
-n = 0     
+queue = []     
+prev=[]
 
-def bfs(visitado, grafo, nodo,  L, flag):
+def bfs(visitado, grafo, nodo,iter):
+  visitado.append(nodo)
+  queue.append(nodo)
+  prev = []
 
- if n != L:
-    for neighbour in grafo[nodo]:
-        if neighbour not in visitado:
-            visitado.append(neighbour)
-            if flag and neighbour == grafo[nodo]:
-                bfs(visitado, grafo, neighbour, L, True)
-            else:
-                bfs(visitado, grafo, neighbour, L, False)
-
-  queue.append(nodo,n)
 
   while queue:
-
-    print(visitado)
     s = queue.pop(0)
 
+    if s not in prev:
+      prev=queue.copy()
+      iter-=1
+      if iter==0:
+        return visitado
 
     for neighbour in grafo[s]:
       if neighbour not in visitado:
@@ -36,5 +34,5 @@ def bfs(visitado, grafo, nodo,  L, flag):
         queue.append(neighbour)
     
 
-
-bfs(visitado, grafo, 'I', 2)
+recorrido = bfs(visitado, grafo, 'A', 3)
+print(recorrido)
